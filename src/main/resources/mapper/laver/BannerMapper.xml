@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.talelin.latticy.laver.mapper.BannerMapper">
+<!--    配置接口实现类路径-->
+
+    <resultMap id="BaseResultMap" type="io.github.talelin.latticy.laver.model.BannerDO">
+        <id column="id" property="id"/>
+        <result column="img" property="img"/>
+        <result column="description" property="description"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="delete_time" property="deleteTime"/>
+        <result column="title" property="title"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <!--CONCAT("%",#{q},"%") 与接口方法名一致-->
+    <select id="getAllBanners" resultMap="BaseResultMap">
+        SELECT *
+        FROM banner
+    </select>
+
+    <insert id="insertBanner" useGeneratedKeys="true" keyProperty="id" parameterType="io.github.talelin.latticy.laver.model.BannerDO">
+        insert into banner(name,title)
+        values (#{name},#{title})
+    </insert>
+
+</mapper>
