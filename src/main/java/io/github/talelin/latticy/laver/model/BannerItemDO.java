@@ -1,29 +1,27 @@
 package io.github.talelin.latticy.laver.model;
 
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.Getter;
 import lombok.Setter;
+
 import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter
-@TableName("banner")
-public class BannerDO {
+@TableName("banner_item")
+public class BannerItemDO {
+
+    @TableId(value = "id",type = IdType.AUTO)
     private Long id;
 
     private String name;
 
-    private String title;
-
-    private String description;
-
     private String img;
 
-//    private List<BannerItemDO> bannerItems;
+    private String keyword;
+
+    private Integer type;
 
     @JsonIgnore
     private Date createTime;
@@ -32,7 +30,11 @@ public class BannerDO {
     private Date updateTime;
 
     @JsonIgnore
-    //软删除
     @TableLogic
     private Date deleteTime;
+
+    @TableField("banner_id")
+    private Long bannerId;
+
+
 }

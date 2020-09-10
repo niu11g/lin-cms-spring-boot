@@ -14,14 +14,14 @@ public class BannerDTO {
     @Length(min=2,max=20,message = "Banner")
     private String name;
 
-//    @Length(min=2,max = 30)
-//    private String title;
-//
-//    @Length(min=2,max=256)
-//    private String img;
-//
-//    @Length(min=2,max=256)
-//    private String description;
+    @Length(min=2,max = 30)
+    private String title;
+
+    @Length(min=2,max=256)
+    private String img;
+
+    @Length(min=2,max=256)
+    private String description;
 
 
 }
