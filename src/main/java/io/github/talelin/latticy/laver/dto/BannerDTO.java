@@ -18,6 +18,7 @@ public class BannerDTO {
     private String title;
 
     @Length(min=2,max=256)
+    //静态oss ,静态资源服务器,图片URL地址存储在数据库中
     private String img;
 
     @Length(min=2,max=256)

@@ -14,5 +14,7 @@ public interface BannerService  {
 
      void delete(Long id);
 
+     void create(BannerDTO dto);
+
      BannerWithItemsBO getWithItems(Long id);
 }

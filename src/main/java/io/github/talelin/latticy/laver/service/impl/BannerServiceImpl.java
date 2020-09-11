@@ -1,7 +1,5 @@
 package io.github.talelin.latticy.laver.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -21,7 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BannerServiceImpl extends ServiceImpl<BannerMapper,BannerDO> implements BannerService  {
+public class BannerServiceImpl extends ServiceImpl<BannerMapper, BannerDO> implements BannerService {
 
     @Autowired
     private BannerMapper bannerMapper;
@@ -31,24 +29,31 @@ public class BannerServiceImpl extends ServiceImpl<BannerMapper,BannerDO> implem
 
     @Override
     public IPage<BannerDO> getBanners(Page<BannerDO> page) {
-        return bannerMapper.selectPage(page,null);
+        return bannerMapper.selectPage(page, null);
 
+    }
+
+    @Override
+    public void create(BannerDTO dto){
+        BannerDO bannerDO = new BannerDO();
+        BeanUtils.copyProperties(dto,bannerDO);
+        this.bannerMapper.insertBanner(bannerDO);
     }
 
     @Override
     public void update(BannerDTO dto, Long id) {
         BannerDO bannerDO = this.getById(id);
-        if(bannerDO == null){
+        if (bannerDO == null) {
             throw new NotFoundException(20000);
         }
-        BeanUtils.copyProperties(dto,bannerDO);
-        this.updateById(bannerDO);
+        BeanUtils.copyProperties(dto, bannerDO);
+        this.bannerMapper.updateById(bannerDO);
     }
 
     @Override
     public void delete(Long id) {
         BannerDO bannerDO = this.getById(id);
-        if(bannerDO == null){
+        if (bannerDO == null) {
             throw new NotFoundException(20000);
         }
         this.bannerMapper.deleteById(id);
@@ -58,7 +63,7 @@ public class BannerServiceImpl extends ServiceImpl<BannerMapper,BannerDO> implem
     @Override
     public BannerWithItemsBO getWithItems(Long id) {
         BannerDO banner = this.getById(id);
-        if(banner == null) {
+        if (banner == null) {
             throw new NotFoundException(20000);
         }
 //        1.QueryWrapper<BannerItemDO> wrapper = new QueryWrapper<>();
@@ -73,10 +78,10 @@ public class BannerServiceImpl extends ServiceImpl<BannerMapper,BannerDO> implem
 
         //链式法返回数据
         List<BannerItemDO> bannerItems = new LambdaQueryChainWrapper<>(bannerItemMapper)
-                .eq(BannerItemDO::getBannerId,id)
+                .eq(BannerItemDO::getBannerId, id)
                 .list();
 
-        return new BannerWithItemsBO(banner,bannerItems);
+        return new BannerWithItemsBO(banner, bannerItems);
 
     }
 }

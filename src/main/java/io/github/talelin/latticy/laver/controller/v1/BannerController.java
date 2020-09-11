@@ -7,9 +7,11 @@ import io.github.talelin.latticy.laver.bo.BannerWithItemsBO;
 import io.github.talelin.latticy.laver.dto.BannerDTO;
 import io.github.talelin.latticy.laver.model.BannerDO;
 import io.github.talelin.latticy.laver.service.BannerService;
+import io.github.talelin.latticy.vo.CreatedVO;
 import io.github.talelin.latticy.vo.DeletedVO;
 import io.github.talelin.latticy.vo.PageResponseVO;
 import io.github.talelin.latticy.vo.UpdatedVO;
+import net.sf.jsqlparser.statement.create.view.CreateView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,11 @@ import javax.validation.constraints.Positive;
 public class BannerController {
     @Autowired
     private BannerService bannerService;
+
+    public CreatedVO create(@RequestBody @Validated BannerDTO dto){
+        bannerService.create(dto);
+        return new CreatedVO();
+    }
 
     @PutMapping("/{id}")
     public UpdatedVO update(@RequestBody @Validated BannerDTO dto,
