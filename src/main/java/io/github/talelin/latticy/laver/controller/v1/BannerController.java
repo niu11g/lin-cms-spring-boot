@@ -41,6 +41,13 @@ public class BannerController {
 
     }
 
+    //@LoginRequired
+    //@GroupRequired
+    //@AdminRequired
+    //@PermissionMeta
+    //@PermissionModule
+    //lin-cms是为每个API分配权限
+
     @DeleteMapping("/{id}")
     public DeletedVO delete(@PathVariable @Positive Long id) {
 //        bannerService
