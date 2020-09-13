@@ -2,6 +2,7 @@ package io.github.talelin.latticy.laver.controller.v1;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import io.github.talelin.core.annotation.LoginRequired;
 import io.github.talelin.latticy.common.mybatis.Page;
 import io.github.talelin.latticy.laver.bo.BannerWithItemsBO;
 import io.github.talelin.latticy.laver.dto.BannerDTO;
@@ -41,11 +42,11 @@ public class BannerController {
 
     }
 
-    //@LoginRequired
-    //@GroupRequired
-    //@AdminRequired
-    //@PermissionMeta
-    //@PermissionModule
+    //@LoginRequired：限制不能直接通过浏览器和PostMan访问,要访问必须携带当前用户的令牌
+    //@AdminRequired：如果接口只能管理员访问，必须登陆且分组必须是管理员
+    //@GroupRequired：接口保护，分组被分配了这个权限，才能被访问。通常和@PermissionMeta注解一起使用
+    //@PermissionMeta(value="删除Banner",module="Banner"):只附加元数据，不被保护
+    //@PermissionModule：类注解，提供接口默认module名
     //lin-cms是为每个API分配权限
 
     @DeleteMapping("/{id}")
@@ -69,6 +70,7 @@ public class BannerController {
     }
 
     @GetMapping("/{id}")
+    @LoginRequired
     public BannerWithItemsBO getWithItems(@PathVariable @Positive Long id){
         return bannerService.getWithItems(id);
     }

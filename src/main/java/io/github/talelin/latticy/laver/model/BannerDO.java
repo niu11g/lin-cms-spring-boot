@@ -13,6 +13,9 @@ import java.util.List;
 @Setter
 @TableName("banner")
 public class BannerDO {
+    //细粒度权限控制 字段权限控制
+    //动态SQL 分拆API方案
+    //select banner.name banner.id banner.img
     private Long id;
 
     private String name;
