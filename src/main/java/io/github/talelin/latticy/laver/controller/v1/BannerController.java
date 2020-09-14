@@ -2,7 +2,9 @@ package io.github.talelin.latticy.laver.controller.v1;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import io.github.talelin.core.annotation.Logger;
 import io.github.talelin.core.annotation.LoginRequired;
+import io.github.talelin.core.annotation.PermissionMeta;
 import io.github.talelin.latticy.common.mybatis.Page;
 import io.github.talelin.latticy.laver.bo.BannerWithItemsBO;
 import io.github.talelin.latticy.laver.dto.BannerDTO;
@@ -57,8 +59,10 @@ public class BannerController {
 
     }
 
-    //required 代表是否必须
+    //required 代表是否必须 行为日志
     @GetMapping("/page")
+    @PermissionMeta(value = "查询Banner")
+    @Logger(template = "{user.username}查询了Banner数据")
     public PageResponseVO<BannerDO> getBanners(@RequestParam(required = false, defaultValue = "0")
                                                @Min(value = 0) Integer page,
                                                @RequestParam(required = false, defaultValue = "10")
@@ -70,7 +74,7 @@ public class BannerController {
     }
 
     @GetMapping("/{id}")
-    @LoginRequired
+//    @LoginRequired
     public BannerWithItemsBO getWithItems(@PathVariable @Positive Long id){
         return bannerService.getWithItems(id);
     }
