@@ -15,12 +15,12 @@ public class SpuDetailDO extends SpuDO {
 
     private String categoryName;
 
-    private String sketchSpecName;
+    private String sketchSpecKeyName;
 
-    private String defaultSkuName;
+    private String defaultSkuTitle;
 
-    private List<String> bannnerImgs;
+    private List<String> spuImgList;
 
-    private List<String> detailImgs;
+    private List<String> spuDetailImgList;
 
 }
