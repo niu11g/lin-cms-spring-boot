@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryDO> implements CategoryService {
 
     @Override
-    public CategoryDO getCategoryById(Long id) {
+    public CategoryDO getCategoryById(Integer id) {
         CategoryDO categoryDO = this.getById(id);
         if(categoryDO == null){
             throw new NotFoundException(40000);

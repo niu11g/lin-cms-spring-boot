@@ -16,6 +16,6 @@ import java.util.Locale;
  */
 public interface CategoryService extends IService<CategoryDO> {
 
-    CategoryDO getCategoryById(Long id);
+    CategoryDO getCategoryById(Integer id);
 
 }

@@ -1,13 +1,9 @@
-package io.github.talelin.latticy.dto;
+package io.github.talelin.latticy.laver.dto;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-import javax.xml.bind.annotation.XmlNs;
+import javax.validation.constraints.*;
 import java.util.List;
 
 /**
@@ -22,11 +18,11 @@ public class SpuDTO {
     @Length(min=1,max=128)
     private String title;
 
-    @NotBlank
+//    @NotBlank
     @Length(min=1,max = 255)
     private String subtitle;
 
-    @NotBlank
+//    @NotBlank
     @Length(min=1,max = 255)
     private String img;
 
@@ -35,18 +31,18 @@ public class SpuDTO {
 
     @Positive
     @NotNull
-    private Long categoryId;
+    private Integer categoryId;
 
     @Max(1)
-    @Max(0)
+    @Min(0)
     private Integer online;
 
     @Positive
-    private Long sketchSpecId;
+    private Integer sketchSpecId;
 
     //正整数
     @Positive
-    private Long defaultSkuId;
+    private Integer defaultSkuId;
 
     @NotBlank
     @Length(min=1,max = 20)
@@ -61,7 +57,7 @@ public class SpuDTO {
     @Length(min=1,max = 255)
     private String tags;
 
-    private List<Long> specKeyIdList;
+    private List<Integer> specKeyIdList;
 
     private List<String> spuImgList;
 

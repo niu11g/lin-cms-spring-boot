@@ -1,6 +1,6 @@
 package io.github.talelin.latticy.laver.service;
 
-import io.github.talelin.latticy.dto.SpuDTO;
+import io.github.talelin.latticy.laver.dto.SpuDTO;
 import io.github.talelin.latticy.laver.model.SpuDO;
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.github.talelin.latticy.laver.model.SpuDetailDO;

@@ -11,6 +11,7 @@ public class CreatedVO extends UnifyResponseVO<String> {
 
     public CreatedVO() {
         super(Code.CREATED.getCode());
+        super.setMessage(Code.CREATED.getZhDescription());
         ResponseUtil.setCurrentResponseHttpStatus(HttpStatus.CREATED.value());
     }
 

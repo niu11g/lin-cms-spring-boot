@@ -9,31 +9,21 @@ import lombok.experimental.Accessors;
 
 /**
  * @author generator@TaleLin
- * @since 2020-09-16
+ * @since 2020-09-17
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("category")
-public class CategoryDO extends BaseModel {
+@TableName("spu_detail_img")
+public class SpuDetailImgDO extends BaseModel {
 
-
-    private String name;
-
-    private String description;
-
-    private Integer isRoot;
-
-    private Integer parentId;
 
     private String img;
 
+    private Integer spuId;
+
     @TableField(value = "`index`")
     private Integer index;
-
-    private Integer online;
-
-    private Integer level;
 
 
 }

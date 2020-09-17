@@ -4,7 +4,7 @@ package io.github.talelin.latticy.laver.controller.v1;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.github.talelin.latticy.common.mybatis.Page;
 import io.github.talelin.latticy.common.util.PageUtil;
-import io.github.talelin.latticy.dto.SpuDTO;
+import io.github.talelin.latticy.laver.dto.SpuDTO;
 import io.github.talelin.latticy.laver.model.SpuDetailDO;
 import io.github.talelin.latticy.laver.service.SpuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,9 @@ public class SpuController {
     @Autowired
     private SpuService spuService;
 
-    @PostMapping(" ")
+    @PostMapping("")
     public CreatedVO create(@RequestBody @Validated SpuDTO spuDTO) {
+        this.spuService.create(spuDTO);
         return new CreatedVO();
     }
 
